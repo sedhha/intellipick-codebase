@@ -1,0 +1,160 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.jsonArgument="{}{'running': false, 'dateString': '2021-11-20 13:41:55__1637395915.600671', 'params': [{'href': 'https://devpost.com/mohanthivyaa', 'uri': 'devpost', 'id': '1637395913658573__0'}, {'href': 'https://github.com/tomchristie', 'uri': 'github', 'id': '1637395913658573__0'}, {'href': 'https://stackoverflow.com/users/530160/nick-odell', 'uri': 'stackoverflow', 'id': '1637395913658573__0'}, {'href': 'https://github.com/laurenbaron', 'uri': 'github', 'id': '1637395914116534__2'}, {'href': 'https://devpost.com/laurenbaron', 'uri': 'devpost', 'id': '1637395914116534__2'}, {'href': 'https://github.com/Kludex', 'uri': 'github', 'id': '1637395914597512__4'}, {'href': 'https://stackoverflow.com/users/15117201/jahn-e', 'uri': 'stackoverflow', 'id': '1637395914597512__4'}, {'href': 'https://devpost.com/apoorvakamat885', 'uri': 'devpost', 'id': '1637395914597512__4'}, {'href': 'https://stackoverflow.com/users/15117201/jahn-e', 'uri': 'stackoverflow', 'id': '1637395914324707__3'}, {'href': 'https://devpost.com/anabiha', 'uri': 'devpost', 'id': '1637395914324707__3'}, {'href': 'https://github.com/JayH5', 'uri': 'github', 'id': '1637395914324707__3'}, {'href': 'https://devpost.com/krishjain02939', 'uri': 'devpost', 'id': '1637395914785316__5'}, {'href': 'https://github.com/Krish-sysadmin', 'uri': 'github', 'id': '1637395914785316__5'}, {'href': 'https://stackoverflow.com/users/17222090/usmansharif-shaik', 'uri': 'stackoverflow', 'id': '1637395915097453__6'}, {'href': 'https://devpost.com/gayatri924', 'uri': 'devpost', 'id': '1637395915097453__6'}, {'href': 'https://github.com/Kludex', 'uri': 'github', 'id': '1637395915097453__6'}, {'href': 'https://stackoverflow.com/users/6630084/jackdaw', 'uri': 'stackoverflow', 'id': '1637395915419196__7'}, {'href': 'https://github.com/florimondmanca', 'uri': 'github', 'id': '1637395915419196__7'}, {'href': 'https://devpost.com/deblinachattopadhyay280500', 'uri': 'devpost', 'id': '1637395915419196__7'}], 'weights': {'devpost': {'pc': 1, 'hc': 1, 'ac': 1, 'fc': 1, 'flc': 1, 'lc': 1}, 'github': {'pc': 1, 'rc': 1, 'pkc': 1, 'fc': 1, 'flc': 1}, 'so': {'rc': 1, 'rch': 1, 'qc': 1, 'ac': 1, 'pc': 1}}}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="jsonArgument" Type="InArgument(x:String)" />
+    <x:Property Name="out_allTimeResponse" Type="OutArgument(x:String)" />
+    <x:Property Name="out_immediateResponse" Type="OutArgument(x:String)" />
+    <x:Property Name="out_undefinedOperations" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1038.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="34">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Scrapping Process involves reading a List of Objects that contain their scrapping Uris, tags and unique Resume Id to distinguish between the files&#xA;" DisplayName="Begin Scrapping Process" sap:VirtualizedContainerService.HintSize="376,974" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="dateString" />
+      <Variable x:TypeArguments="njl:JToken" Name="scrappingList" />
+      <Variable x:TypeArguments="sd:DataTable" Name="resultTable" />
+      <Variable x:TypeArguments="njl:JToken" Name="jsonWeights" />
+      <Variable x:TypeArguments="x:String" Name="response" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Deserializing Inputs and preparing them for processing" DisplayName="Invoke deserializeInputs workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\deserializeInputs.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_JsonString">[jsonArgument]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TimeStampId">[dateString]</OutArgument>
+        <OutArgument x:TypeArguments="njl:JToken" x:Key="out_ScrappingObjectList">[scrappingList]</OutArgument>
+        <OutArgument x:TypeArguments="njl:JToken" x:Key="out_jsonWeights">[jsonWeights]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Takes in Scrapping List and accordingly performs the scrapping operations that are required.&#xA;" DisplayName="Invoke processHandler workflow" sap:VirtualizedContainerService.HintSize="334,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\processHandler.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="njl:JToken" x:Key="in_processList">[scrappingList]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_resultTable">[resultTable]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_undefinedOperations">[out_undefinedOperations]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_dateString">[dateString]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Once everything is done and table is properly merged, now it's the time to compute Weighted Scores and Add in the Final Result" DisplayName="Invoke weightDistributor workflow" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\weightDistributor.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Table">[resultTable]</InArgument>
+        <InArgument x:TypeArguments="njl:JToken" x:Key="in_Weights">[jsonWeights]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Table">[resultTable]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_WeightColumnName">weightedScore</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Once all the Data Processing is this done, this Workflow pushes this Data to a Temporary Database which is like a Data Warehouse and users can then access that data from the same location in the frontend UI.&#xA;" DisplayName="Invoke UpdateTables workflow" sap:VirtualizedContainerService.HintSize="200,214.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\UpdateTables.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_resultTable">[resultTable]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="out_allTimeResponse">[out_allTimeResponse]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="out_immediateResponse">[out_immediateResponse]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>

@@ -1,0 +1,13 @@
+@import '../utility/components/pagesStyles';
+@import '../utility/variables/variables';
+
+.qa-dialogue-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.BgColor {
+  background-color: $background-color;
+}

@@ -1,0 +1,19 @@
+.RoundButton {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NoHover {
+  pointer-events: none;
+}
+
+.DisabledButton {
+  cursor: not-allowed;
+  color: #ccc;
+  background-color: #abb2bf;
+  &:hover {
+    transform: none;
+  }
+}

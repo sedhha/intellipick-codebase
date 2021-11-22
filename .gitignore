@@ -1,0 +1,38 @@
+uipath_python/secrets/
+uipath_python/testData/
+uipath_python/testCloud/
+
+uipath_python/venv/
+__pycache__/
+frontend/hr_profiler/node_modules/
+uipath_files/.local/
+frontend/hr_profiler/.pnp
+frontend/hr_profiler/.pnp.js
+
+# testing
+frontend/hr_profiler/coverage
+
+# production
+frontend/hr_profiler/build
+frontend/hr_profiler/src/secrets
+frontend/hr_profiler/.env
+
+# misc
+frontend/hr_profiler/.DS_Store
+frontend/hr_profiler/.env.local
+frontend/hr_profiler/.env.development.local
+frontend/hr_profiler/.env.test.local
+frontend/hr_profiler/.env.production.local
+
+frontend/hr_profiler/npm-debug.log*
+frontend/hr_profiler/yarn-debug.log*
+frontend/hr_profiler/yarn-error.log*
+
+graphics/designs.pptx
+
+appScriptAPI/
+graphics/IntelliPick.pptx
+graphics/recorded.pptx
+video/
+video
+graphics/recorded.pptx

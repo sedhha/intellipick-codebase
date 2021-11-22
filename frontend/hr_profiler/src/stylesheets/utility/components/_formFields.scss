@@ -1,0 +1,28 @@
+.LabelField {
+  display: flex;
+  padding: 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+
+  &__label {
+    font-size: 0.85rem;
+    margin-right: 1rem;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  &__labelInput {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    padding: 0.35rem;
+    min-width: 12rem;
+
+    &:focus {
+      border-radius: 0.5rem;
+      border: 0.2rem solid #fff;
+    }
+  }
+}

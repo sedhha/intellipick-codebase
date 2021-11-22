@@ -1,0 +1,13 @@
+@import '../utility/components/pagesStyles';
+@import '../utility/variables/variables';
+@import '../utility/components/formFields';
+
+.LoginScaffold {
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.BgColor {
+  background-color: $background-color;
+}

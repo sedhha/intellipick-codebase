@@ -1,0 +1,12 @@
+.RowDiv {
+  display: flex;
+  align-items: center;
+}
+.RowLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.RangeSlider {
+  flex: auto;
+  cursor: pointer;
+}

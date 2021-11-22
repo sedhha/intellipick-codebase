@@ -1,0 +1,11 @@
+button {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  padding: 0.5rem 0.8rem;
+  letter-spacing: 0.04rem;
+  border-radius: 0.2rem;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

@@ -1,0 +1,35 @@
+.MuiDataGrid-root .MuiDataGrid-footerContainer {
+  min-height: auto;
+}
+.MuiDataGrid-main,
+.MuiDataGrid-footerContainer,
+.MuiTablePagination-root {
+  color: #fff;
+}
+.MuiTablePagination-root:last-child {
+  color: #fff;
+}
+.MuiGridPanelWrapper-root {
+  max-height: 25rem;
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+.MuiDataGrid-panelWrapper {
+  max-height: 20rem;
+}
+
+.MuiSvgIcon-root .MuiSvgIcon-fontSizeSmall {
+  color: #fff;
+}

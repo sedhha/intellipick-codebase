@@ -1,0 +1,70 @@
+@import '../utility/components/pagesStyles';
+@import '../utility/variables/variables';
+@import '../utility/components/buttons';
+@import '../utility/animations/entranceEffects';
+@import '../utility/components/displays';
+
+.GreyButtonBackground {
+  background-color: #efefef;
+  border-radius: 0.31rem;
+}
+
+.GoogleLogo {
+  height: 1.5rem;
+  width: auto;
+}
+
+.ButtonStyle {
+  font-weight: 500;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+}
+
+.CornerChatBot {
+  position: absolute;
+  bottom: 0;
+  margin: 0.5rem;
+  right: 0;
+  // width: 25%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ChatBoxConfig {
+  animation: slideUp 1s ease-in-out;
+  // animation-fill-mode: forwards;
+  &__HeaderBox {
+    display: flex;
+    background-color: #efefef;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.3rem;
+    &_header {
+      padding: 0;
+      margin: 0;
+      font-weight: 500;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.BoldFontButton {
+  font-weight: bold;
+  background-color: red;
+  font-size: 0.5rem;
+  // letter-spacing: 0.5rem;
+  color: #fff;
+  padding: 0.1rem 0.2rem;
+}
+.faviconProfile {
+  height: 8rem;
+  width: 8rem;
+  margin: 0 1rem;
+}
+.RowComponent {
+  display: flex;
+  align-items: center;
+  // margin-top: -4rem;
+}

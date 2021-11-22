@@ -1,0 +1,16 @@
+__pycache__
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.pytest_cache
+secrets/
+testData/
+uiPath_queue/
+venv/
+achievements.csv
+result.csv
+temp.py
+testData.pdf
+Dockerfile
+README.md
