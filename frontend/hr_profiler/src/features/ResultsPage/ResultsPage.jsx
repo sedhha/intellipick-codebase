@@ -172,7 +172,7 @@ const programmingSchema = [
   },
   {
     field: 'lfw',
-    headerName: 'Language/Framework',
+    headerName: 'Language or Framework',
     flex: 1,
     hide: false,
   },
@@ -231,9 +231,9 @@ export default function ResultsPage() {
         ) : (
           <DataTable
             columns={programmingSchema}
-            rows={programmingData.map((element) => ({
+            rows={programmingData.map((element, index) => ({
               ...element,
-              id: element.resume_id,
+              id: `${element.resume_id}__${element.lfw}__${index}`,
             }))}
           />
         )}
