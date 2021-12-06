@@ -6,6 +6,8 @@ const initialState = {
   causedError: false,
   dataFetched: false,
   data: [],
+  programmingData: [],
+  genericDataActive: true,
 };
 
 export const dispatchUIPathAction = createAsyncThunk(
@@ -26,6 +28,9 @@ export const dataSlice = createSlice({
     resetTable: (state) => {
       state.dataFetched = false;
       state.data = [];
+    },
+    updateGenericActivity: (state, action) => {
+      state.genericDataActive = action.payload;
     },
     performOperationsViaSocket: (state, action) => {
       const { response, alertPopupFunction } = action.payload;
@@ -55,9 +60,10 @@ export const dataSlice = createSlice({
           state.causedError = true;
           alertPopupFunction(response.msg);
         } else {
-          const { as_data } = response;
+          const { as_data, programming_data } = response;
           state.dataFetched = true;
           state.data = as_data.payload.sheetObjects;
+          state.programmingData = programming_data.payload.sheetObjects;
         }
         state.isLoading = false;
       })
@@ -74,6 +80,7 @@ export const {
   resetTable,
   performOperationsViaSocket,
   beginSocketReq,
+  updateGenericActivity,
 } = dataSlice.actions;
 
 export const scrappedData = (state) => state.scrappedData;

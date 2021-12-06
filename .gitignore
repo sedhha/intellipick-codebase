@@ -3,6 +3,7 @@ uipath_python/testData/
 uipath_python/testCloud/
 
 uipath_python/venv/
+uipath_python/.git
 __pycache__/
 frontend/hr_profiler/node_modules/
 uipath_files/.local/

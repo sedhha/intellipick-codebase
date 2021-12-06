@@ -43,7 +43,7 @@ async def upload_file(resumePdf: UploadFile = File(...)):
         tmpf = d + "pdf.pdf"
         with open(tmpf,"wb") as f:
             f.write(data)
-    hrefs = availableScreeningProfiles(str(tmpf),idStr = idx)
+    hrefs = availableScreeningProfiles(str(tmpf),idStr = idx,fileName=resumePdf.filename)
     return hrefs
 
 
@@ -64,6 +64,8 @@ def completeRequestAndReturnResults(jobParams:dict,weights:dict=None):
 
     date = d.now()
     dateString = f'{date.strftime("%Y-%m-%d %H:%M:%S")}__{time()}'
+
+    print(jobParams)
     jobParams = {
         'jsonArgument':{
             'running':False,
@@ -89,10 +91,16 @@ def completeRequestAndReturnResults(jobParams:dict,weights:dict=None):
     appScriptResponse = appScript.getSheetData(sheetName="immediateMerged")
     appScriptResponse = appScriptResponse.json()
 
+    programmingResponse = appScript.getSheetData(sheetName="imps")
+    programmingResponse = programmingResponse.json()
+
     if appScriptResponse["error"]:
         return {**appScriptResponse}
+
+    if programmingResponse["error"]:
+        return {**programmingResponse}
     
-    return {**response,'as_data':appScriptResponse}
+    return {**response,'as_data':appScriptResponse,'programming_data':programmingResponse}
 
 @app.post("/trigger_ui_path")
 async def trigger_ui_path(req:Request):

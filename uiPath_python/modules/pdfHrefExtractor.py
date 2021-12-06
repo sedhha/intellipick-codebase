@@ -8,7 +8,7 @@ def getHrefsFromPDF(pdfPath:str)->dict:
     return pdf.get_references_as_dict().get('url',[])
 
 
-def availableScreeningProfiles(pdfPath:str,idStr:str="Id not Defined")->dict:
+def availableScreeningProfiles(pdfPath:str,fileName:str,idStr:str="Id not Defined")->dict:
     hrefs = getHrefsFromPDF(pdfPath=pdfPath)
     availableLinks = []
     for href in hrefs:
@@ -18,7 +18,8 @@ def availableScreeningProfiles(pdfPath:str,idStr:str="Id not Defined")->dict:
                 availableLinks.append({
                     'href':href,
                     'uri':uri,
-                    'id': idStr
+                    'id': idStr,
+                    'fileName': fileName
                 })
     return availableLinks
 

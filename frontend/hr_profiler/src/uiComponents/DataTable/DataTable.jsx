@@ -26,7 +26,7 @@ function CustomToolbar() {
 }
 
 export default function DataTable(props) {
-  const { columns, rows, density } = props;
+  const { columns, rows, density, pageSize } = props;
   return (
     <React.Fragment>
       <DataGrid
@@ -37,6 +37,8 @@ export default function DataTable(props) {
         }}
         density={density || 'compact'}
         disableSelectionOnClick
+        pageSize={pageSize || 15}
+        rowsPerPageOptions={[pageSize || 15]}
       />
     </React.Fragment>
   );

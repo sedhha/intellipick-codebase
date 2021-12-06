@@ -1,13 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GithubRepoData" this:GithubRepoData.in_githubRepoHref="https://github.com/sedhha?tab=repositories" this:GithubRepoData.in_githubUsername="sedhha" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GithubRepoData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_githubRepoHref" Type="InArgument(x:String)" />
     <x:Property Name="in_githubUsername" Type="InArgument(x:String)" />
     <x:Property Name="out_githubLanguageScores" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_resumeId" Type="InArgument(x:String)" />
+    <x:Property Name="in_fileName" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1592</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2276.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GithubRepoData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -42,6 +44,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.CSV</x:String>
       <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -76,10 +79,11 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Once the Basic Profile Data is Scrapped, this Workflow takes in the repository Url input and returns Repository Specific Data. Which is basically the major languages the user has worked with.&#xA;" DisplayName="GithubRepoData" sap:VirtualizedContainerService.HintSize="636,1527.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Once the Basic Profile Data is Scrapped, this Workflow takes in the repository Url input and returns Repository Specific Data. Which is basically the major languages the user has worked with.&#xA;" DisplayName="GithubRepoData" sap:VirtualizedContainerService.HintSize="720,2212" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="browserIdentificationString" />
     </Sequence.Variables>
@@ -89,7 +93,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap2010:Annotation.AnnotationText="Creating Browser Identification Selector, Since this Process is also going to run in parallel, in Order to avoid data duplicacy, selectors are made specific." DisplayName="Browser Identification String" sap:VirtualizedContainerService.HintSize="594,140.666666666667" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="Creating Browser Identification Selector, Since this Process is also going to run in parallel, in Order to avoid data duplicacy, selectors are made specific." DisplayName="Browser Identification String" sap:VirtualizedContainerService.HintSize="678,140.666666666667" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[browserIdentificationString]</OutArgument>
       </Assign.To>
@@ -102,28 +106,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:LogMessage DisplayName="Debugger Log" sap:VirtualizedContainerService.HintSize="594,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[browserIdentificationString]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Goto Github Repository" sap:VirtualizedContainerService.HintSize="594,1100" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_githubRepoHref]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Goto Github Repository" sap:VirtualizedContainerService.HintSize="678,1877.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_githubRepoHref]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="560,997.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Browser Sequence" sap:VirtualizedContainerService.HintSize="644,1774.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="518,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-            <Sequence sap2010:Annotation.AnnotationText="Get Primary Programming Language of All the Repositories. At max the First 1000 repositories will be considered." DisplayName="Get Primary Programming Language" sap:VirtualizedContainerService.HintSize="476,398" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="602,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <Sequence sap2010:Annotation.AnnotationText="Get Primary Programming Language of All the Repositories. At max the First 1000 repositories will be considered." DisplayName="Get Primary Programming Language" sap:VirtualizedContainerService.HintSize="602,1558.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -131,24 +127,26 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Spot the Browser with Github Repositories of the Given User.&#xA;" BrowserType="Chrome" DisplayName="Spot the Browser" sap:VirtualizedContainerService.HintSize="434,260.666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="9c5eaa394411a52b08069985df9a4c50" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, browserIdentificationString)]">
+              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Spot the Browser with Github Repositories of the Given User.&#xA;" BrowserType="Chrome" DisplayName="Spot the Browser" sap:VirtualizedContainerService.HintSize="560,1421.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="9c5eaa394411a52b08069985df9a4c50" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, browserIdentificationString)]">
                 <ui:BrowserScope.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Scrap primary Language of given Repository" sap:VirtualizedContainerService.HintSize="376,348.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence DisplayName="Scrap primary Language of given Repository" sap:VirtualizedContainerService.HintSize="572,891.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="sd:DataTable" Name="repoPrimaryLanguageDT" />
                         <Variable x:TypeArguments="sd:DataTable" Name="resultTable" />
+                        <Variable x:TypeArguments="x:Boolean" Name="forksExist" />
+                        <Variable x:TypeArguments="x:Boolean" Name="starsExist" />
                       </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[repoPrimaryLanguageDT]" DisplayName="Structured Data Extraction" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/row&gt;&lt;column exact='1' name='primaryLanguage' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' text='Updated' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='forks' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' text='Updated' idx='1' /&gt;&lt;webctrl tag='a' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='stars' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' text='Updated' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_4" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='Next' parentid='user-repositories-list' tag='A' /&gt;" SimulateClick="True">
+                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[repoPrimaryLanguageDT]" DisplayName="Structured Data Extraction" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/row&gt;&lt;column exact='1' name='primaryLanguage' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' text='Updated' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='forks' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' text='Updated' idx='1' /&gt;&lt;webctrl tag='a' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='stars' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' text='Updated' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="530,106" sap2010:WorkflowViewState.IdRef="ExtractData_4" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='Next' parentid='user-repositories-list' tag='A' /&gt;" SimulateClick="True">
                         <ui:ExtractData.Target>
                           <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="021fc5fe-bdc3-41f3-ac91-2e6990ce04d5" InformativeScreenshot="c9cdc9b81c289e8a0a216b80b18ae4ae" Selector="&lt;webctrl parentid='user-repositories-list' tag='UL' /&gt;" WaitForReady="COMPLETE">
                             <ui:Target.TimeoutMS>
@@ -158,12 +156,12 @@
                         </ui:ExtractData.Target>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:ExtractData>
-                      <ui:BuildDataTable DataTable="[resultTable]" DisplayName="Result DataTable" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;primaryLanguage&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;50000&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Occurence&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;RepositoryPoints&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;">
+                      <ui:BuildDataTable DataTable="[resultTable]" DisplayName="Result DataTable" sap:VirtualizedContainerService.HintSize="530,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;primaryLanguage&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;50000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Occurence&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;RepositoryPoints&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -171,17 +169,72 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:BuildDataTable>
-                      <Assign DisplayName="GroupBy Table and Find the Count of every Language" sap:VirtualizedContainerService.HintSize="334,65.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign DisplayName="Does Forks Column Exist in Datatable?" sap:VirtualizedContainerService.HintSize="530,62" sap2010:WorkflowViewState.IdRef="Assign_4">
                         <Assign.To>
-                          <OutArgument x:TypeArguments="sd:DataTable">[resultTable]</OutArgument>
+                          <OutArgument x:TypeArguments="x:Boolean">[forksExist]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From d In repoPrimaryLanguageDT.AsEnumerable
+                          <InArgument x:TypeArguments="x:Boolean">[repoPrimaryLanguageDT.Columns.Contains("forks")]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Does Stars Column Exist in Datatable?" sap:VirtualizedContainerService.HintSize="530,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[starsExist]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">[repoPrimaryLanguageDT.Columns.Contains("stars")]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <If Condition="[repoPrimaryLanguageDT is Nothing orElse repoPrimaryLanguageDT.Rows.Count = 0]" DisplayName="If Repo Scrapped Table is Empty" sap:VirtualizedContainerService.HintSize="530,248.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+                        <If.Then>
+                          <Sequence DisplayName="Do Nothing" sap:VirtualizedContainerService.HintSize="242,84.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Update Results Table" sap:VirtualizedContainerService.HintSize="242,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="GroupBy Table and Find the Count of every Language" sap:VirtualizedContainerService.HintSize="262,65.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="sd:DataTable">[resultTable]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From d In repoPrimaryLanguageDT.AsEnumerable
 Group d By k=d("primaryLanguage").toString.Trim Into grp=Group
-Let cs = grp.Sum(Function (rc) CInt( 0+If(String.IsNullOrEmpty(rc("stars").ToString),0,CInt(rc("stars").ToString))))
-Let fcs = grp.Sum(Function (rc) CInt( 0+If(String.IsNullOrEmpty(rc("forks").ToString),0,CInt(rc("forks").ToString))))
-Let ra = New Object(){k, grp.Count,cs+fcs}
+Let cs = grp.Sum(Function (rc) CInt( 0+If(starsExist,If(String.IsNullOrEmpty(rc("stars").ToString),0,If(rc("stars").ToString.IsNumeric,CInt(rc("stars").ToString),0)),0)))
+Let fcs = grp.Sum(Function (rc) CInt( 0+If(forksExist,If(String.IsNullOrEmpty(rc("forks").ToString),0,If(rc("forks").ToString.IsNumeric,CInt(rc("forks").ToString),0)),0)))
+Let ra = New Object(){k.ToLower, grp.Count,cs+fcs}
 Select r= resultTable.Rows.Add(ra)).CopyToDataTable]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Sequence DisplayName="Add Resume Identifier Colums" sap:VirtualizedContainerService.HintSize="262,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="resume_Id" DataTable="[resultTable]" DefaultValue="[in_resumeId]" DisplayName="Add Resume Id" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+                              <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="name" DataTable="[resultTable]" DefaultValue="[in_fileName]" DisplayName="Add Resume Name" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+                            </Sequence>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                      <Assign DisplayName="Assigning the results to output Argument" sap:VirtualizedContainerService.HintSize="530,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="sd:DataTable">[out_githubLanguageScores]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="sd:DataTable">[resultTable]</InArgument>
                         </Assign.Value>
                       </Assign>
                     </Sequence>
@@ -196,10 +249,16 @@ Select r= resultTable.Rows.Add(ra)).CopyToDataTable]</InArgument>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:BrowserScope>
             </Sequence>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Breakpoint" sap:VirtualizedContainerService.HintSize="518,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;We are done&quot;]" />
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:OpenBrowser>
   </Sequence>
 </Activity>

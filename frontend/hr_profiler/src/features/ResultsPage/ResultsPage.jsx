@@ -2,7 +2,10 @@ import React from 'react';
 import classes from '../../stylesheets/styles/ResultsPage.module.scss';
 import DataTable from '../../uiComponents/DataTable/DataTable';
 import { useSelector, useDispatch } from 'react-redux';
-import { resetTable } from '../../slices/slices/dataSlice';
+import {
+  resetTable,
+  updateGenericActivity,
+} from '../../slices/slices/dataSlice';
 const schema = [
   {
     field: 'id',
@@ -154,19 +157,86 @@ const schema = [
   },
 ];
 
+const programmingSchema = [
+  {
+    field: 'id',
+    headerName: 'ID',
+    flex: 0.25,
+    hide: true,
+  },
+  {
+    field: 'name',
+    headerName: 'File Name',
+    flex: 1,
+    hide: false,
+  },
+  {
+    field: 'lfw',
+    headerName: 'Language/Framework',
+    flex: 1,
+    hide: false,
+  },
+  {
+    field: 'totalScore',
+    headerName: 'Total Score',
+    flex: 1,
+    hide: false,
+  },
+];
+
 export default function ResultsPage() {
-  const { data } = useSelector((state) => state.scrappedData);
+  const { data, programmingData, genericDataActive } = useSelector(
+    (state) => state.scrappedData
+  );
   const dispatch = useDispatch();
   return (
     <React.Fragment>
       <div
-        style={{ height: '25rem', color: '#fff' }}
+        style={{ height: '23rem', color: '#fff' }}
         className={classes.TableContainer}>
-        <br />
-        <DataTable
-          columns={schema}
-          rows={data.map((element) => ({ ...element, id: element.resume_id }))}
-        />
+        <div className={classes.RadioGroupContainer}>
+          <label className={classes.RadioGroupContainer_headerLabel}>
+            View Type
+          </label>
+          <input
+            className={classes.RadioGroupContainer_inputField}
+            type='radio'
+            onChange={() => dispatch(updateGenericActivity(true))}
+            name='view'
+            checked={genericDataActive}
+          />
+          <label className={classes.RadioGroupContainer_descriptors}>
+            Profile Score
+          </label>
+
+          <input
+            className={classes.RadioGroupContainer_inputField}
+            type='radio'
+            name='view'
+            checked={!genericDataActive}
+            onChange={() => dispatch(updateGenericActivity(false))}
+          />
+          <label className={classes.RadioGroupContainer_descriptors}>
+            Programming Score
+          </label>
+        </div>
+        {genericDataActive ? (
+          <DataTable
+            columns={schema}
+            rows={data.map((element) => ({
+              ...element,
+              id: element.resume_id,
+            }))}
+          />
+        ) : (
+          <DataTable
+            columns={programmingSchema}
+            rows={programmingData.map((element) => ({
+              ...element,
+              id: element.resume_id,
+            }))}
+          />
+        )}
         <button
           className={classes.GoBackButton}
           onClick={() => dispatch(resetTable())}>
