@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>830,1971.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2064</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StackOverflowTagsScrapping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -81,10 +81,9 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Here we collect all the Stack Overflow Tags Data, How the Users are performing in the open source community based on their proficiency in specific Topics and Tags&#xA;" DisplayName="SO Tags Scrapping" sap:VirtualizedContainerService.HintSize="840,1906.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Here we collect all the Stack Overflow Tags Data, How the Users are performing in the open source community based on their proficiency in specific Topics and Tags&#xA;" DisplayName="SO Tags Scrapping" sap:VirtualizedContainerService.HintSize="840,1999.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -92,13 +91,13 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Stack Overflow Languages Scrapping" sap:VirtualizedContainerService.HintSize="798,1752.66666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_stackOverflowUri+&quot;?tab=tags&amp;sort=votes&quot;]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Stack Overflow Languages Scrapping" sap:VirtualizedContainerService.HintSize="798,1845.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_stackOverflowUri+&quot;?tab=tags&amp;sort=votes&quot;]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Scrap the Data and Close the Browser" sap:VirtualizedContainerService.HintSize="764,1650" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Scrap the Data and Close the Browser" sap:VirtualizedContainerService.HintSize="764,1742.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="normalBrowserExists" />
             </Sequence.Variables>
@@ -128,7 +127,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If Condition="[normalBrowserExists]" DisplayName="If Normal Browser Selection Exists" sap:VirtualizedContainerService.HintSize="722,1246" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[normalBrowserExists]" DisplayName="If Normal Browser Selection Exists" sap:VirtualizedContainerService.HintSize="722,1338.66666666667" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,20 +135,20 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Normal Browser Sequence" sap:VirtualizedContainerService.HintSize="476,1085.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Normal Browser Sequence" sap:VirtualizedContainerService.HintSize="476,1178" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="(NB): Scrapping Skills Data from SO" sap:VirtualizedContainerService.HintSize="434,884" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f184cfe2193359f0aea5fe0a56e89f7f" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, in_browserSpecificName)]">
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="(NB): Scrapping Skills Data from SO" sap:VirtualizedContainerService.HintSize="434,976.666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f184cfe2193359f0aea5fe0a56e89f7f" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, in_browserSpecificName)]">
                     <ui:BrowserScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Begin Scrapping Process" sap:VirtualizedContainerService.HintSize="304,738" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence DisplayName="Begin Scrapping Process" sap:VirtualizedContainerService.HintSize="304,830.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="sd:DataTable" Name="frameworkPointsTable" />
                             <Variable x:TypeArguments="sd:DataTable" Name="soResultTable_scores" />
@@ -163,9 +162,41 @@
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[frameworkPointsTable]" DisplayName="Extract Votes, Framework and Activities" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;/row&gt;&lt;column exact='1' name='votes' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='framework' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='activities' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname=' Next' parentid='user-tab-tags' tag='A' /&gt;" SimulateClick="True">
+                          <ui:CommentOut DisplayName="Commenting Out Older Way" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,144.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[frameworkPointsTable]" DisplayName="Extract Votes, Framework and Activities" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;/row&gt;&lt;column exact='1' name='votes' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='framework' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='activities' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname=' Next' parentid='user-tab-tags' tag='A' /&gt;" SimulateClick="True">
+                                  <ui:ExtractData.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a7f83cb1-2ca7-41d7-b114-2beccbcda25b" InformativeScreenshot="0b433b71c28104309e9023a07a003a23" Selector="&lt;webctrl tag='TBODY' /&gt;" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:ExtractData.Target>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:ExtractData>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
+                          <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[frameworkPointsTable]" DisplayName="Extract Votes, Framework and Activities" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='votes' attr='text'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='framework' attr='text'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='activities' attr='text'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_7" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname=' Next' parentid='user-tab-tags' tag='A' /&gt;" SimulateClick="True">
                             <ui:ExtractData.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a7f83cb1-2ca7-41d7-b114-2beccbcda25b" InformativeScreenshot="0b433b71c28104309e9023a07a003a23" Selector="&lt;webctrl tag='TBODY' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="830de556-5792-4b60-b6b5-5c0696dc46cc" InformativeScreenshot="91768099314a401515ccc779b114c541" Selector="&lt;webctrl id='user-tab-tags' tag='DIV' /&gt;" WaitForReady="COMPLETE">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -210,7 +241,7 @@
                               <InArgument x:TypeArguments="x:Boolean">[frameworkPointsTable.Columns.Contains("votes")]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[frameworkPointsTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="276,268.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[frameworkPointsTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
@@ -237,7 +268,7 @@
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_resumeId,&#xD;&#xA;in_resumeFileName,&#xD;&#xA;row(&quot;framework&quot;).ToString.ToLower,&#xD;&#xA;If(voteExists,If(String.IsNullOrEmpty(row(&quot;votes&quot;).ToString),0,CInt(row(&quot;votes&quot;))),0) +If(activityExists,If(String.IsNullOrEmpty(row(&quot;activities&quot;).ToString),0,(CInt(row(&quot;activities&quot;))/100)),0)&#xD;&#xA;}]" DataTable="[soResultTable_scores]" DisplayName="Add Rows to SO Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_resumeId,&#xA;in_resumeFileName,&#xA;row(&quot;framework&quot;).ToString.ToLower,&#xA;If(voteExists,If(String.IsNullOrEmpty(row(&quot;votes&quot;).ToString),0,CInt(row(&quot;votes&quot;))),0) +If(activityExists,If(String.IsNullOrEmpty(row(&quot;activities&quot;).ToString),0,(CInt(row(&quot;activities&quot;))/100)),0)&#xA;}]" DataTable="[soResultTable_scores]" DisplayName="Add Rows to SO Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                                       </Sequence>
                                     </If.Then>
                                     <If.Else>

@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1052.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>587.333333333333,1052.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StackOverflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -77,10 +77,9 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="StackOverflow" sap:VirtualizedContainerService.HintSize="421.333333333333,988" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="StackOverflow" sap:VirtualizedContainerService.HintSize="1032,1895.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="uri" />
       <Variable x:TypeArguments="x:String" Name="idx" />
@@ -100,23 +99,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DestructureJsonToken workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\DestructureJsonToken.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DestructureJsonToken workflow" sap:VirtualizedContainerService.HintSize="990,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\DestructureJsonToken.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="njl:JToken" x:Key="in_jsonToken">
-          <mva:VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="in_sequenceItem" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_uri">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="uri" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_id">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="idx" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_href">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="href" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_fileName">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="fileName" />
-        </OutArgument>
+        <InArgument x:TypeArguments="njl:JToken" x:Key="in_jsonToken">[in_sequenceItem]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_uri">[uri]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_id">[idx]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_href">[href]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_fileName">[fileName]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -125,7 +114,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If sap2010:Annotation.AnnotationText="Since Stack Overflow has a slightly different way of String representation and so accordingly FIltering the userName&#xA;" Condition="[href.ElementAt(href.Length-1).Equals(&quot;/&quot;)]" DisplayName="Checking if Last Element is &quot;/&quot;" sap:VirtualizedContainerService.HintSize="379.333333333333,164.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Since Stack Overflow has a slightly different way of String representation and so accordingly FIltering the userName&#xA;" Condition="[href.ElementAt(href.Length-1).Equals(&quot;/&quot;)]" DisplayName="Checking if Last Element is &quot;/&quot;" sap:VirtualizedContainerService.HintSize="990,164.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -178,7 +167,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[userName.Contains(&quot;-&quot;)]" DisplayName="If UserName Contains &quot;-&quot;" sap:VirtualizedContainerService.HintSize="379.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[userName.Contains(&quot;-&quot;)]" DisplayName="If UserName Contains &quot;-&quot;" sap:VirtualizedContainerService.HintSize="990,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -307,7 +296,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign DisplayName="Set up Browser Selector" sap:VirtualizedContainerService.HintSize="379.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Set up Browser Selector" sap:VirtualizedContainerService.HintSize="990,62" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[browserSelector]</OutArgument>
       </Assign.To>
@@ -315,7 +304,7 @@
         <InArgument x:TypeArguments="x:String">["User*"+browserSpecificName+"*Stack Overflow"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap2010:Annotation.AnnotationText="For some specific cases the UserName also displays in capitalized manner as Browser Header, in order to cover those cases as well, we are using this variable&#xA;" DisplayName="Checking for UpperCase Names" sap:VirtualizedContainerService.HintSize="379.333333333333,157.333333333333" sap2010:WorkflowViewState.IdRef="Assign_14">
+    <Assign sap2010:Annotation.AnnotationText="For some specific cases the UserName also displays in capitalized manner as Browser Header, in order to cover those cases as well, we are using this variable&#xA;" DisplayName="Checking for UpperCase Names" sap:VirtualizedContainerService.HintSize="990,157.333333333333" sap2010:WorkflowViewState.IdRef="Assign_14">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[pseudoSelector]</OutArgument>
       </Assign.To>
@@ -328,32 +317,16 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Tags and Characteristics Scrapping" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\StackOverflowTagsScrapping.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Tags and Characteristics Scrapping" sap:VirtualizedContainerService.HintSize="990,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\StackOverflowTagsScrapping.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stackOverflowUserName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="userName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stackOverflowUri">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="href" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_browserSpecificName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="browserSelector" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_characteristicString">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_soCharacteristicsString" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_soFrameworkTable">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_soFrameworkTable" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_browserPseudoSpecificName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="pseudoSelector" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_resumeId">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="idx" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_resumeFileName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="fileName" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stackOverflowUserName">[userName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stackOverflowUri">[href]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_browserSpecificName">[browserSelector]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_characteristicString">[out_soCharacteristicsString]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_soFrameworkTable">[out_soFrameworkTable]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_browserPseudoSpecificName">[pseudoSelector]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_resumeId">[idx]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_resumeFileName">[fileName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -362,26 +335,26 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Basic Scrapping Browser Activity" sap:VirtualizedContainerService.HintSize="379.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[href]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Basic Scrapping Browser Activity" sap:VirtualizedContainerService.HintSize="990,960" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[href]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Perform Stack Overflow Scrapping" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Perform Stack Overflow Scrapping" sap:VirtualizedContainerService.HintSize="956,857.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="normalBrowserExists" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-            <ui:UiElementExists sap2010:Annotation.AnnotationText="Checking if the normal username exists, in case it does, we will go with it otherwise we will go for scrapping the pseudoSelector" DisplayName="NormalUserName Exists" Exists="[normalBrowserExists]" sap:VirtualizedContainerService.HintSize="200,148" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="914,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:UiElementExists sap2010:Annotation.AnnotationText="Checking if the normal username exists, in case it does, we will go with it otherwise we will go for scrapping the pseudoSelector" DisplayName="NormalUserName Exists" Exists="[normalBrowserExists]" sap:VirtualizedContainerService.HintSize="914,130" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e6173df5-9d33-41e7-a326-b4e8ebbbeb30" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&quot;, browserSelector)]">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e6173df5-9d33-41e7-a326-b4e8ebbbeb30" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, browserSelector)]">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -392,21 +365,21 @@
               </ui:UiElementExists.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If Condition="[normalBrowserExists]" DisplayName="If the Header of the Browser is identical to Username (Without Capitalization)" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[normalBrowserExists]" DisplayName="If the Header of the Browser is identical to Username (Without Capitalization)" sap:VirtualizedContainerService.HintSize="914,471.333333333333" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Browser with Normal UserName" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="e3016da6fc20d2762e3513f484f2e999" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, browserSelector)]">
+                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Browser with Normal UserName" sap:VirtualizedContainerService.HintSize="434,310.666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="e3016da6fc20d2762e3513f484f2e999" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, browserSelector)]">
                   <ui:BrowserScope.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>
@@ -523,7 +496,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:GetFullText>
-                        <ui:BuildDataTable DataTable="[soTable]" DisplayName="Build Schema of the Final StackOverflow Table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;username_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;reputation_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;reach_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:long&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;answers_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;questions_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;pc_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;badges_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;">
+                        <ui:BuildDataTable DataTable="[soTable]" DisplayName="Build Schema of the Final StackOverflow Table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;username_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;reputation_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;reach_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:long&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;answers_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;questions_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;pc_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;badges_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -591,7 +564,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:InvokeWorkflowFile>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xD;&#xA;idx,&#xD;&#xA;userName,&#xD;&#xA;Convert.ToInt32(repNum),&#xD;&#xA;Convert.ToInt32(reachNum),&#xD;&#xA;Convert.ToInt32(answersNum),&#xD;&#xA;Convert.ToInt32(questionsNum),&#xD;&#xA;Convert.ToDouble(100-pcNum),&#xD;&#xA;out_soCharacteristicsString&#xD;&#xA;}]" DataTable="[soTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;idx,&#xA;userName,&#xA;Convert.ToInt32(repNum),&#xA;Convert.ToInt32(reachNum),&#xA;Convert.ToInt32(answersNum),&#xA;Convert.ToInt32(questionsNum),&#xA;Convert.ToDouble(100-pcNum),&#xA;out_soCharacteristicsString&#xA;}]" DataTable="[soTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                         <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_5">
                           <Assign.To>
                             <OutArgument x:TypeArguments="sd:DataTable">[out_soTable]</OutArgument>
@@ -605,14 +578,14 @@
                   </ui:BrowserScope.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:BrowserScope>
               </If.Then>
               <If.Else>
-                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Browser with pseudoUsername" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="e3016da6fc20d2762e3513f484f2e999" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, pseudoSelector)]">
+                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Browser with pseudoUsername" sap:VirtualizedContainerService.HintSize="434,310.666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="e3016da6fc20d2762e3513f484f2e999" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, pseudoSelector)]">
                   <ui:BrowserScope.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>
@@ -639,7 +612,7 @@
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:GetFullText DisplayName="Get Reputation" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_6" IgnoreHidden="False">
+                        <ui:GetFullText DisplayName="Get Reputation" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetFullText_6" IgnoreHidden="False">
                           <ui:GetFullText.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07ff0280-9910-4022-bc79-6af87cbece35" InformativeScreenshot="2247436804a86324432ee064047881c3" Selector="&lt;webctrl parentid='stats' tag='DIV' aaname='*reputation*' /&gt;&lt;webctrl parentid='stats' tag='DIV' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
@@ -652,7 +625,7 @@
                           </ui:GetFullText.Text>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -729,7 +702,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:GetFullText>
-                        <ui:BuildDataTable DataTable="[soTable]" DisplayName="Build Schema of the Final StackOverflow Table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;username_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;reputation_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;reach_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:long&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;answers_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;questions_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;pc_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;badges_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;">
+                        <ui:BuildDataTable DataTable="[soTable]" DisplayName="Build Schema of the Final StackOverflow Table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;username_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;reputation_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;reach_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:long&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;answers_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;questions_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;pc_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;badges_so&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -797,7 +770,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:InvokeWorkflowFile>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xD;&#xA;idx,&#xD;&#xA;userName,&#xD;&#xA;Convert.ToInt32(repNum),&#xD;&#xA;Convert.ToInt32(reachNum),&#xD;&#xA;Convert.ToInt32(answersNum),&#xD;&#xA;Convert.ToInt32(questionsNum),&#xD;&#xA;Convert.ToDouble(100-pcNum),&#xD;&#xA;out_soCharacteristicsString&#xD;&#xA;}]" DataTable="[soTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;idx,&#xA;userName,&#xA;Convert.ToInt32(repNum),&#xA;Convert.ToInt32(reachNum),&#xA;Convert.ToInt32(answersNum),&#xA;Convert.ToInt32(questionsNum),&#xA;Convert.ToDouble(100-pcNum),&#xA;out_soCharacteristicsString&#xA;}]" DataTable="[soTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
                         <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_15">
                           <Assign.To>
                             <OutArgument x:TypeArguments="sd:DataTable">[out_soTable]</OutArgument>
@@ -811,20 +784,20 @@
                   </ui:BrowserScope.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:BrowserScope>
               </If.Else>
             </If>
-            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="914,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>

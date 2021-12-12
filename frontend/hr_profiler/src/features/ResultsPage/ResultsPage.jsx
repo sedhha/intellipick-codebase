@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from '../../stylesheets/styles/ResultsPage.module.scss';
 import DataTable from '../../uiComponents/DataTable/DataTable';
+import EmbeddedChart from './EmbeddedCharts/EmbeddedChart';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   resetTable,
@@ -201,9 +202,9 @@ export default function ResultsPage() {
           <input
             className={classes.RadioGroupContainer_inputField}
             type='radio'
-            onChange={() => dispatch(updateGenericActivity(true))}
+            onChange={() => dispatch(updateGenericActivity(0))}
             name='view'
-            checked={genericDataActive}
+            checked={genericDataActive === 0}
           />
           <label className={classes.RadioGroupContainer_descriptors}>
             Profile Score
@@ -213,14 +214,24 @@ export default function ResultsPage() {
             className={classes.RadioGroupContainer_inputField}
             type='radio'
             name='view'
-            checked={!genericDataActive}
-            onChange={() => dispatch(updateGenericActivity(false))}
+            checked={genericDataActive === 1}
+            onChange={() => dispatch(updateGenericActivity(1))}
           />
           <label className={classes.RadioGroupContainer_descriptors}>
             Programming Score
           </label>
+          <input
+            className={classes.RadioGroupContainer_inputField}
+            type='radio'
+            name='view'
+            checked={genericDataActive === 2}
+            onChange={() => dispatch(updateGenericActivity(2))}
+          />
+          <label className={classes.RadioGroupContainer_descriptors}>
+            Drill Down
+          </label>
         </div>
-        {genericDataActive ? (
+        {genericDataActive === 0 ? (
           <DataTable
             columns={schema}
             rows={data.map((element) => ({
@@ -228,7 +239,7 @@ export default function ResultsPage() {
               id: element.resume_id,
             }))}
           />
-        ) : (
+        ) : genericDataActive === 1 ? (
           <DataTable
             columns={programmingSchema}
             rows={programmingData.map((element, index) => ({
@@ -236,6 +247,8 @@ export default function ResultsPage() {
               id: `${element.resume_id}__${element.lfw}__${index}`,
             }))}
           />
+        ) : (
+          <EmbeddedChart />
         )}
         <button
           className={classes.GoBackButton}
