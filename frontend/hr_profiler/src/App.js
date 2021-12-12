@@ -27,9 +27,9 @@ function App() {
     RenderComponent = (
       <>
         <Routes>
-          <Route path='/' element={<HomePage />}></Route>
+          <Route path='/*' element={<HomePage />}></Route>
           {/* {          <Route path='/*' element={<PageNotFound />}></Route>*/}
-          <Route path='/profiles/*' element={<ProfilePage />}></Route>
+          {/* {<Route path='/profiles/*' element={<ProfilePage />}></Route>} */}
         </Routes>
       </>
     );

@@ -7,7 +7,8 @@ import {
   updateGeoData,
   updateAuthenticated,
 } from '../../slices/slices/userInfoSlice';
-// import Spinner from '../../app/uiComponents/spinner/Spinner';
+import { useSelector } from 'react-redux';
+import Spinner from '../../uiComponents/spinner/Spinner';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export default function HomePage() {
     getGeoData();
   }, [dispatch]);
   const [showDialogue, setShowDialogue] = React.useState(false);
+  const { pending } = useSelector((state) => state.userInfo);
   return (
     <div
       className={[
@@ -47,59 +49,66 @@ export default function HomePage() {
         classes.FlexCenter_Column,
         classes.BlueBackground,
       ].join(' ')}>
-      <div className={classes.RowComponent}>
-        <img
-          src={process.env.PUBLIC_URL + '/graphics/logo.png'}
-          alt={'logo'}
-          className={classes.faviconProfile}
-        />
-        <h1 className={classes.WhiteHeading}>Intelli Pick</h1>
-      </div>
-      <GoogleLogin
-        clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
-        buttonText='Login With Google'
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-        isSignedIn={true}
-      />
-      <div className={classes.CornerChatBot}>
-        {showDialogue && (
-          <div className={classes.ChatBoxConfig}>
-            <div className={classes.ChatBoxConfig__HeaderBox}>
-              <div className={classes.ChatBoxConfig__HeaderBox_header}>
-                How can I resolve your query?
-              </div>
-              <button
-                className={[classes.RoundButton, classes.BoldFontButton].join(
-                  ' '
-                )}
-                onClick={() => setShowDialogue((prev) => !prev)}>
-                X
-              </button>
-            </div>
-
-            <iframe
-              allow='microphone;'
-              title={'FAQs'}
-              src='https://console.dialogflow.com/api-client/demo/embedded/78855eb4-8879-421a-bd48-77411d9ac70b'
-              style={{
-                maxWidth: '400px',
-                width: '19rem',
-                height: '25rem',
-                maxHeight: '500px',
-                border: 'none',
-              }}></iframe>
+      {pending ? (
+        <Spinner customMessgae='Authenticating Your Identity' />
+      ) : (
+        <React.Fragment>
+          <div className={classes.RowComponent}>
+            <img
+              src={process.env.PUBLIC_URL + '/graphics/logo.png'}
+              alt={'logo'}
+              className={classes.faviconProfile}
+            />
+            <h1 className={classes.WhiteHeading}>Intelli Pick</h1>
           </div>
-        )}
-        {!showDialogue && (
-          <button
-            onClick={() => setShowDialogue((prev) => !prev)}
-            className={[classes.ButtonStyle].join(' ')}>
-            Talk to Alex
-          </button>
-        )}
-      </div>
+          <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
+            buttonText='Login With Google'
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+            isSignedIn={true}
+          />
+          <div className={classes.CornerChatBot}>
+            {showDialogue && (
+              <div className={classes.ChatBoxConfig}>
+                <div className={classes.ChatBoxConfig__HeaderBox}>
+                  <div className={classes.ChatBoxConfig__HeaderBox_header}>
+                    How can I resolve your query?
+                  </div>
+                  <button
+                    className={[
+                      classes.RoundButton,
+                      classes.BoldFontButton,
+                    ].join(' ')}
+                    onClick={() => setShowDialogue((prev) => !prev)}>
+                    X
+                  </button>
+                </div>
+
+                <iframe
+                  allow='microphone;'
+                  title={'FAQs'}
+                  src='https://console.dialogflow.com/api-client/demo/embedded/78855eb4-8879-421a-bd48-77411d9ac70b'
+                  style={{
+                    maxWidth: '400px',
+                    width: '19rem',
+                    height: '25rem',
+                    maxHeight: '500px',
+                    border: 'none',
+                  }}></iframe>
+              </div>
+            )}
+            {!showDialogue && (
+              <button
+                onClick={() => setShowDialogue((prev) => !prev)}
+                className={[classes.ButtonStyle].join(' ')}>
+                Talk to Alex
+              </button>
+            )}
+          </div>
+        </React.Fragment>
+      )}
     </div>
   );
 }

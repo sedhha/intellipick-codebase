@@ -23,6 +23,7 @@ import EditBar from './Components/EditBar/EditBar';
 import ResultsPage from '../ResultsPage/ResultsPage';
 import UnAuthorized from '../UnAuthorizedPage/UnAuthorizedPage';
 import { GoogleLogout } from 'react-google-login';
+
 export default function ProfilePage() {
   const navigate = useNavigate();
   const popupAlert = useAlert();
@@ -45,21 +46,6 @@ export default function ProfilePage() {
     isTouched: false,
     errorMessage: '',
   });
-
-  // React.useEffect(() => {
-  //   onmeaage();
-  // });
-  // const onmeaage = () => {
-  //   ws.onmessage = (event) => {
-  //     const response = JSON.parse(event.data);
-  //     dispatch(
-  //       performOperationsViaSocket({
-  //         response,
-  //         alertPopupFunction: showFailedMessage,
-  //       })
-  //     );
-  //   };
-  // };
 
   const updateEditHandler = (close = false, index = 0) => {
     dispatch(updateEditMode({ value: close, modeIndex: index }));
