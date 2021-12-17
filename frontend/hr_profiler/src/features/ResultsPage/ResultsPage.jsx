@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   resetTable,
   updateGenericActivity,
+  scrappedData,
 } from '../../slices/slices/dataSlice';
+
 const schema = [
   {
     field: 'id',
@@ -186,9 +188,9 @@ const programmingSchema = [
 ];
 
 export default function ResultsPage() {
-  const { data, programmingData, genericDataActive } = useSelector(
-    (state) => state.scrappedData
-  );
+  const { data, programmingData } = useSelector((state) => state.scrappedData);
+
+  const { genericDataActive } = useSelector(scrappedData);
   const dispatch = useDispatch();
   return (
     <React.Fragment>
@@ -204,7 +206,7 @@ export default function ResultsPage() {
             type='radio'
             onChange={() => dispatch(updateGenericActivity(0))}
             name='view'
-            checked={genericDataActive === 0}
+            checked={genericDataActive === 0 || genericDataActive === true}
           />
           <label className={classes.RadioGroupContainer_descriptors}>
             Profile Score
@@ -231,7 +233,7 @@ export default function ResultsPage() {
             Drill Down
           </label>
         </div>
-        {genericDataActive === 0 ? (
+        {genericDataActive === 0 || genericDataActive === true ? (
           <DataTable
             columns={schema}
             rows={data.map((element) => ({

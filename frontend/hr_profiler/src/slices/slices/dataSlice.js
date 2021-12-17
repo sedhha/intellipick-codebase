@@ -7,7 +7,7 @@ const initialState = {
   dataFetched: false,
   data: [],
   programmingData: [],
-  genericDataActive: true,
+  genericDataActive: 0,
 };
 
 export const dispatchUIPathAction = createAsyncThunk(
