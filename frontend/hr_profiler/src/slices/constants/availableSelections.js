@@ -117,10 +117,50 @@ export const profileSelections = [
     value: {},
   },
   {
-    displayName: 'Canva',
+    displayName: 'Behance',
     isActive: false,
     isEditable: false,
     id: nanoid(),
     value: {},
+  },
+];
+
+export const devpostTemplates = [
+  {
+    id: nanoid(),
+    displayName: 'Reset',
+    index: -1,
+  },
+  {
+    id: nanoid(),
+    displayName: 'Project Template',
+    index: 0,
+    weights: {
+      ...weights,
+      devpost: {
+        pc: 1,
+        hc: Math.random(),
+        ac: Math.random(),
+        fc: Math.random(),
+        flc: Math.random(),
+        lc: Math.random(),
+      },
+    },
+  },
+  {
+    id: nanoid(),
+    displayName: 'Hackathon Template',
+    index: 1,
+    weights: {
+      ...weights,
+      devpost: {
+        pc: Math.random(),
+        hc: 1,
+        ac: Math.random(),
+        fc: Math.random(),
+        flc: Math.random(),
+        lc: Math.random(),
+      },
+    },
   },
 ];

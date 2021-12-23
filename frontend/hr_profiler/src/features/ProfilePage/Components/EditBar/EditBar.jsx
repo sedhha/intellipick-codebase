@@ -5,7 +5,11 @@ import { updateTypes } from '../../../../slices/constants/configUpdateTypes';
 import RangeSlider from '../../../../uiComponents/Sliders/Slider';
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateWeights } from '../../../../slices/slices/configurations';
+import {
+  updateWeights,
+  updateAllWeights,
+} from '../../../../slices/slices/configurations';
+import { devpostTemplates } from '../../../../slices/constants/availableSelections';
 const availableOptions = {
   DEVPOST: 'Devpost',
   GITHUB: 'Github',
@@ -155,6 +159,42 @@ export default function EditBar(props) {
       } else {
         console.log('Key Pressed but done nothing');
       }
+    }
+  };
+  const dispatchRandomVariables = (bool) => {
+    if (bool) {
+      onKeyPressHandler({
+        value: [],
+        identifier: updateTypes.Devpost.UPDATE_SKILLS,
+      });
+      onKeyPressHandler({
+        value: [],
+        identifier: updateTypes.Devpost.UPDATE_INTERESTS,
+      });
+    } else {
+      const skills = ['C#', 'Java', 'Python', 'JavaScript', 'C++', 'C', 'Ruby']
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map((element) => createOption(element));
+      const interests = [
+        'AR/VR',
+        'Machine Learning',
+        'Data Science',
+        'BlockChain',
+        'TensorFlow',
+        'Computer Vision',
+      ]
+        .slice(0, 3)
+        .map((element) => createOption(element));
+
+      onKeyPressHandler({
+        value: skills,
+        identifier: updateTypes.Devpost.UPDATE_SKILLS,
+      });
+      onKeyPressHandler({
+        value: interests,
+        identifier: updateTypes.Devpost.UPDATE_INTERESTS,
+      });
     }
   };
 
@@ -352,13 +392,31 @@ export default function EditBar(props) {
   }
   return (
     <div className={classes.EditBarSkeleton}>
-      <h5
-        className={[
-          classes.WhiteHeading__small,
-          classes.HeaderSpecificStyling,
-        ].join(' ')}>
-        Configure How you would want a profile to be Rated.
-      </h5>
+      <div className={classes.TopRow}>
+        <h5
+          className={[
+            classes.WhiteHeading__small,
+            classes.HeaderSpecificStyling,
+          ].join(' ')}>
+          Configure How you would want a profile to be Rated.
+        </h5>
+        <div className={classes.TemplateBox}>
+          <label className={classes.TemplateBox_label}>
+            Select a Template:{' '}
+          </label>
+          <select
+            onChange={(event) => {
+              dispatch(updateAllWeights({ index: +event.target.value }));
+              dispatchRandomVariables(+event.target.value === -1);
+            }}>
+            {devpostTemplates.map((template) => (
+              <option key={template.id} value={template.index}>
+                {template.displayName}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
       {EditorComponent}
       <br />
       <button className={classes.ButtonsEdit} onClick={goBackToProfilePage}>

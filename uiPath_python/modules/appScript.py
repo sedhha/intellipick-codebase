@@ -29,3 +29,25 @@ class AppScriptAPI:
         
         return response
 
+    def getMultipleSheetDataAtOnce(self,sheetDetails:list,sheetId:str=None):
+        if sheetId is None:
+            sheetId = self.sheetId
+
+        multipleSheetUri = "https://script.google.com/macros/s/AKfycbxQyuoetExczf3KaGM-K53XB4X269SuJ3kP4LBm1xxW3CVbyKLCoLS4XPrjmoJB-ElQdw/exec"
+        
+        reqBody = {
+            'apiKey': self.secrets["apiKey"],
+            'operationType':self.secrets["defined_operations"]["getMultipleTagData"],
+            'operationProps': {
+                "sheetId":sheetId,
+                "sheetDetails":sheetDetails
+            }
+        }
+
+        
+        
+        response = post(url = multipleSheetUri,json=reqBody)
+        
+        return response
+
+

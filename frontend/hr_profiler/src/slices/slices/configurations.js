@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { dispatchSignInRequest } from '../apis/userInfoAPIs';
+import { devpostTemplates } from '../constants/availableSelections';
 import {
   profileSelections,
   weights,
@@ -53,6 +53,15 @@ export const configSlice = createSlice({
       const { primaryKey, secondaryKey, value } = action.payload;
       state.weights[primaryKey][secondaryKey] = value;
     },
+
+    updateAllWeights: (state, action) => {
+      const { index } = action.payload;
+      if (index === -1) {
+        state.weights = { ...weights };
+      } else {
+        state.weights = devpostTemplates[index + 1].weights;
+      }
+    },
   },
 
   extraReducers: () => {},
@@ -63,6 +72,7 @@ export const {
   updateEditMode,
   updateDevpostVariables,
   updateWeights,
+  updateAllWeights,
 } = configSlice.actions;
 
 export const configData = (state) => state.config;

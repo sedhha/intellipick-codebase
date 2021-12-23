@@ -88,19 +88,23 @@ def completeRequestAndReturnResults(jobParams:dict,weights:dict=None):
             "status_code":500
             }
 
-    appScriptResponse = appScript.getSheetData(sheetName="immediateMerged")
-    appScriptResponse = appScriptResponse.json()
 
-    programmingResponse = appScript.getSheetData(sheetName="imps")
-    programmingResponse = programmingResponse.json()
-
-    if appScriptResponse["error"]:
-        return {**appScriptResponse}
-
-    if programmingResponse["error"]:
-        return {**programmingResponse}
+    data = appScript.getMultipleSheetDataAtOnce(sheetDetails = [
+        {
+            "name":"immediateMerged",
+            "tag":"as_data"
+        },
+        {
+            "name":"imps",
+            "tag":"programming_data"
+        }
+        ]).json()
     
-    return {**response,'as_data':appScriptResponse,'programming_data':programmingResponse}
+    if data["error"]:
+        return {**data}
+    
+    payload = data["payload"]    
+    return {**response,**payload}
 
 @app.post("/trigger_ui_path")
 async def trigger_ui_path(req:Request):

@@ -24,7 +24,6 @@
   padding: 0;
   margin: 0;
   font-size: 0.8rem;
-  margin-bottom: 0.3rem;
 }
 .InputField_Text {
   flex: auto;
@@ -46,4 +45,18 @@
 
 .blackColor {
   color: #000;
+}
+.TopRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+.TemplateBox {
+  display: flex;
+  gap: 0.5rem;
+  &_label {
+    font-size: 0.9rem;
+  }
 }

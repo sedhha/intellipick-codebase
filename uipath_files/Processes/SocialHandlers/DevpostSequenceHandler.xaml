@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2280.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,574.666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Devpost_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -45,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,7 +78,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Goes to Devpost, Scraps out relevant public data and creates a Datatable for the same." DisplayName="Devpost Process Handler" sap:VirtualizedContainerService.HintSize="636,2216" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Goes to Devpost, Scraps out relevant public data and creates a Datatable for the same." DisplayName="Devpost Process Handler" sap:VirtualizedContainerService.HintSize="526,510" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="uri" />
       <Variable x:TypeArguments="x:String" Name="idx" />
@@ -91,7 +91,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DestructureJsonToken workflow" sap:VirtualizedContainerService.HintSize="594,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\DestructureJsonToken.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DestructureJsonToken workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\DestructureJsonToken.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jsonToken">
           <mva:VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="in_sequenceItem" />
@@ -114,299 +114,341 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Takes in the above ingested urls to begin scrapping the public profile data. Note that the Scrapping tool only scraps public data, there's no cookies or tokens stored inside our browser in order to ensure we don't breach any privacy policies." BrowserType="Chrome" DisplayName="Open Browser and Begin Scrapping" sap:VirtualizedContainerService.HintSize="594,1939.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[href]">
-      <ui:OpenBrowser.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Begin Browser Process" sap:VirtualizedContainerService.HintSize="560,1774.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="userName" />
-              <Variable x:TypeArguments="x:String" Name="devpostPageSelector" />
-            </Sequence.Variables>
+    <If Condition="True" sap:VirtualizedContainerService.HintSize="484,233.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Build Fake DP Table" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sd:DataTable" Name="dpTable" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:BuildDataTable DataTable="[dpTable]" DisplayName="Build Schema of the Final Devpost Table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;username_devpost&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;skills&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;interests&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;projectCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;hackathonCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;achievementCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;followerCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;followingCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;likesCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="518,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-            <Assign sap2010:Annotation.AnnotationText="Extracts username from the using String Manipulation.&#xA;" DisplayName="Extract Devpost UserName" sap:VirtualizedContainerService.HintSize="518,124" sap2010:WorkflowViewState.IdRef="Assign_1">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[userName]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[href.Replace("https://devpost.com","").Replace("devpost.com","").Replace("/","")]</InArgument>
-              </Assign.Value>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </Assign>
-            <Assign DisplayName="Unique Selector String" sap:VirtualizedContainerService.HintSize="518,62" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[devpostPageSelector]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">["*("+userName+") software portfolio | Devpost"]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Sequence DisplayName="Handles Scrapping Workflow" sap:VirtualizedContainerService.HintSize="518,1292.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Scrapping Skills and Interests" sap:VirtualizedContainerService.HintSize="476,1200.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Since the Browser may span for multiple users at a time. It's necessary to keep Unique Selectors. Here we use username with wild card to avoid any duplicacy or non reliability&#xA;" BrowserType="Chrome" DisplayName="Browser Specification" sap:VirtualizedContainerService.HintSize="434,1108.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="4c0d3c9db4c436b17bc9618328f77c36" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, devpostPageSelector)]">
-                  <ui:BrowserScope.Body>
-                    <ActivityAction x:TypeArguments="x:Object">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Extracting Relevant Datapoints" sap:VirtualizedContainerService.HintSize="304,884" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                        <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Default="0" Name="hC" />
-                          <Variable x:TypeArguments="sd:DataTable" Name="skillsTable" />
-                          <Variable x:TypeArguments="sd:DataTable" Name="interestsTable" />
-                          <Variable x:TypeArguments="x:String" Default="0" Name="lC" />
-                          <Variable x:TypeArguments="x:String" Default="0" Name="pC" />
-                          <Variable x:TypeArguments="x:String" Default="0" Name="aC" />
-                          <Variable x:TypeArguments="x:String" Default="0" Name="fC" />
-                          <Variable x:TypeArguments="x:String" Default="0" Name="flC" />
-                          <Variable x:TypeArguments="sd:DataTable" Name="dpTable" />
-                          <Variable x:TypeArguments="x:String" Name="skillsString" />
-                          <Variable x:TypeArguments="x:String" Name="interestsString" />
-                        </Sequence.Variables>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[interestsTable]" DisplayName="Extract Interests Data" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='elements' attr='text'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='ul' idx='1' /&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="100" SimulateClick="True">
-                          <ui:ExtractData.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="86d0ae15-42cd-4792-8bd5-58c5dd4401f6" Selector="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;header&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='portfolio-user-info' tag='DIV' /&gt;" WaitForReady="COMPLETE">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                            </ui:Target>
-                          </ui:ExtractData.Target>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:ExtractData>
-                        <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[skillsTable]" DisplayName="Extract Skill Data" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='skills' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100" SimulateClick="True">
-                          <ui:ExtractData.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="64a3cb04-d240-4afd-b081-6869073a4ee3" InformativeScreenshot="0c0cbafdcbca958feca6bef610139167" Selector="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;header&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul' parentid='portfolio-user-info' tag='UL' /&gt;" WaitForReady="COMPLETE">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                            </ui:Target>
-                          </ui:ExtractData.Target>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:ExtractData>
-                        <Sequence sap2010:Annotation.AnnotationText="Metrics Data Refers to any kind of numbers like participations achievements, hackathon counts, etc.&#xA;" DisplayName="Get Metrics Data" sap:VirtualizedContainerService.HintSize="262,164.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:GetFullText ContinueOnError="True" DisplayName="Get Projects Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_1" IgnoreHidden="False">
-                            <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Projects' parentid='portfolio-navigation' tag='A' innertext='*Projects' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
-                            </ui:GetFullText.Target>
-                            <ui:GetFullText.Text>
-                              <OutArgument x:TypeArguments="x:String">[pC]</OutArgument>
-                            </ui:GetFullText.Text>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:GetFullText>
-                          <ui:GetFullText ContinueOnError="True" DisplayName="Get Hackathons Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_2" IgnoreHidden="False">
-                            <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Hackathons' parentid='portfolio-navigation' tag='A' innertext='*Hackathons' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
-                            </ui:GetFullText.Target>
-                            <ui:GetFullText.Text>
-                              <OutArgument x:TypeArguments="x:String">[hC]</OutArgument>
-                            </ui:GetFullText.Text>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:GetFullText>
-                          <ui:GetFullText ContinueOnError="True" DisplayName="Get Achievements Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_3" IgnoreHidden="False">
-                            <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Achievements' parentid='portfolio-navigation' tag='A' innertext='*Achievements' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
-                            </ui:GetFullText.Target>
-                            <ui:GetFullText.Text>
-                              <OutArgument x:TypeArguments="x:String">[aC]</OutArgument>
-                            </ui:GetFullText.Text>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:GetFullText>
-                          <ui:GetFullText ContinueOnError="True" DisplayName="Get Followers Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_4" IgnoreHidden="False">
-                            <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Followers' parentid='portfolio-navigation' tag='A' innertext='*Followers' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
-                            </ui:GetFullText.Target>
-                            <ui:GetFullText.Text>
-                              <OutArgument x:TypeArguments="x:String">[fC]</OutArgument>
-                            </ui:GetFullText.Text>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:GetFullText>
-                          <ui:GetFullText ContinueOnError="True" DisplayName="Get Following Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_5" IgnoreHidden="False">
-                            <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Following' parentid='portfolio-navigation' tag='A' innertext='*Following' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
-                            </ui:GetFullText.Target>
-                            <ui:GetFullText.Text>
-                              <OutArgument x:TypeArguments="x:String">[flC]</OutArgument>
-                            </ui:GetFullText.Text>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:GetFullText>
-                          <ui:GetFullText ContinueOnError="True" DisplayName="Get Likes Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_6" IgnoreHidden="False">
-                            <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Likes' parentid='portfolio-navigation' tag='A' innertext='*Likes' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                              </ui:Target>
-                            </ui:GetFullText.Target>
-                            <ui:GetFullText.Text>
-                              <OutArgument x:TypeArguments="x:String">[lC]</OutArgument>
-                            </ui:GetFullText.Text>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:GetFullText>
-                        </Sequence>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert Skills DT to Comma Seperated String" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\RowToStringConverter.xaml">
-                          <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[skillsTable]</InArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_String">[skillsString]</OutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_rowName">skills</InArgument>
-                          </ui:InvokeWorkflowFile.Arguments>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:InvokeWorkflowFile>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert Interests DT to Comma Seperated String" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\RowToStringConverter.xaml">
-                          <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[interestsTable]</InArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_String">[interestsString]</OutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_rowName">elements</InArgument>
-                          </ui:InvokeWorkflowFile.Arguments>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:InvokeWorkflowFile>
-                        <ui:BuildDataTable DataTable="[dpTable]" DisplayName="Build Schema of the Final Devpost Table" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;username_devpost&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;skills&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;interests&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;projectCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;hackathonCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;achievementCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;followerCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;followingCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;likesCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:BuildDataTable>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{idx,&#xA;userName,&#xA;skillsString,&#xA;interestsString,&#xA;Convert.ToInt32(pC),&#xA;Convert.ToInt32(hC),&#xA;Convert.ToInt32(aC),&#xA;Convert.ToInt32(fC),&#xA;Convert.ToInt32(flC),&#xA;Convert.ToInt32(lC)&#xA;}]" DataTable="[dpTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                        <Assign DisplayName="Assign the Results to Output" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_3">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="sd:DataTable">[out_dpTable]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="sd:DataTable">[dpTable]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:BrowserScope.Body>
+          </ui:BuildDataTable>
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{idx,&#xD;&#xA;href.Replace(&quot;https://devpost.com&quot;,&quot;&quot;).Replace(&quot;devpost.com&quot;,&quot;&quot;).Replace(&quot;/&quot;,&quot;&quot;),&#xD;&#xA;&quot;C#,Java,C++,Python,Javascript,Node&quot;,&#xD;&#xA;&quot;AR,AR/VR,Blockchain&quot;,&#xD;&#xA;0,&#xD;&#xA;0,&#xD;&#xA;0,&#xD;&#xA;0,&#xD;&#xA;0,&#xD;&#xA;0&#xD;&#xA;}]" DataTable="[dpTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+          <Assign DisplayName="Assign the Results to Output" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[out_dpTable]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[dpTable]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Actual Table" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Takes in the above ingested urls to begin scrapping the public profile data. Note that the Scrapping tool only scraps public data, there's no cookies or tokens stored inside our browser in order to ensure we don't breach any privacy policies." BrowserType="Chrome" DisplayName="Open Browser and Begin Scrapping" sap:VirtualizedContainerService.HintSize="200,214.666666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[href]">
+            <ui:OpenBrowser.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Begin Browser Process" sap:VirtualizedContainerService.HintSize="560,1774.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="userName" />
+                    <Variable x:TypeArguments="x:String" Name="devpostPageSelector" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:BrowserScope>
-              </Sequence>
-            </Sequence>
-            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab After Processing is Complete" sap:VirtualizedContainerService.HintSize="518,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
-          </Sequence>
-        </ActivityAction>
-      </ui:OpenBrowser.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:OpenBrowser>
+                  <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="518,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                  <Assign sap2010:Annotation.AnnotationText="Extracts username from the using String Manipulation.&#xA;" DisplayName="Extract Devpost UserName" sap:VirtualizedContainerService.HintSize="518,124" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[userName]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[href.Replace("https://devpost.com","").Replace("devpost.com","").Replace("/","")]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <Assign DisplayName="Unique Selector String" sap:VirtualizedContainerService.HintSize="518,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[devpostPageSelector]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">["*("+userName+") software portfolio | Devpost"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Sequence DisplayName="Handles Scrapping Workflow" sap:VirtualizedContainerService.HintSize="518,1292.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence DisplayName="Scrapping Skills and Interests" sap:VirtualizedContainerService.HintSize="476,1200.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Since the Browser may span for multiple users at a time. It's necessary to keep Unique Selectors. Here we use username with wild card to avoid any duplicacy or non reliability&#xA;" BrowserType="Chrome" DisplayName="Browser Specification" sap:VirtualizedContainerService.HintSize="434,1108.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="4c0d3c9db4c436b17bc9618328f77c36" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' casesensitive:title='false' /&gt;&quot;, devpostPageSelector)]">
+                        <ui:BrowserScope.Body>
+                          <ActivityAction x:TypeArguments="x:Object">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Extracting Relevant Datapoints" sap:VirtualizedContainerService.HintSize="304,884" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Default="0" Name="hC" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="skillsTable" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="interestsTable" />
+                                <Variable x:TypeArguments="x:String" Default="0" Name="lC" />
+                                <Variable x:TypeArguments="x:String" Default="0" Name="pC" />
+                                <Variable x:TypeArguments="x:String" Default="0" Name="aC" />
+                                <Variable x:TypeArguments="x:String" Default="0" Name="fC" />
+                                <Variable x:TypeArguments="x:String" Default="0" Name="flC" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="dpTable" />
+                                <Variable x:TypeArguments="x:String" Name="skillsString" />
+                                <Variable x:TypeArguments="x:String" Name="interestsString" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[interestsTable]" DisplayName="Extract Interests Data" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='elements' attr='text'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='ul' idx='1' /&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="100" SimulateClick="True">
+                                <ui:ExtractData.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="86d0ae15-42cd-4792-8bd5-58c5dd4401f6" Selector="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;header&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='portfolio-user-info' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:ExtractData.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ExtractData>
+                              <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[skillsTable]" DisplayName="Extract Skill Data" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='skills' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100" SimulateClick="True">
+                                <ui:ExtractData.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="64a3cb04-d240-4afd-b081-6869073a4ee3" InformativeScreenshot="0c0cbafdcbca958feca6bef610139167" Selector="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;header&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul' parentid='portfolio-user-info' tag='UL' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:ExtractData.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ExtractData>
+                              <Sequence sap2010:Annotation.AnnotationText="Metrics Data Refers to any kind of numbers like participations achievements, hackathon counts, etc.&#xA;" DisplayName="Get Metrics Data" sap:VirtualizedContainerService.HintSize="262,164.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:GetFullText ContinueOnError="True" DisplayName="Get Projects Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_1" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Projects' parentid='portfolio-navigation' tag='A' innertext='*Projects' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[pC]</OutArgument>
+                                  </ui:GetFullText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetFullText>
+                                <ui:GetFullText ContinueOnError="True" DisplayName="Get Hackathons Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_2" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Hackathons' parentid='portfolio-navigation' tag='A' innertext='*Hackathons' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[hC]</OutArgument>
+                                  </ui:GetFullText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetFullText>
+                                <ui:GetFullText ContinueOnError="True" DisplayName="Get Achievements Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_3" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Achievements' parentid='portfolio-navigation' tag='A' innertext='*Achievements' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[aC]</OutArgument>
+                                  </ui:GetFullText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetFullText>
+                                <ui:GetFullText ContinueOnError="True" DisplayName="Get Followers Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_4" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Followers' parentid='portfolio-navigation' tag='A' innertext='*Followers' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[fC]</OutArgument>
+                                  </ui:GetFullText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetFullText>
+                                <ui:GetFullText ContinueOnError="True" DisplayName="Get Following Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_5" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Following' parentid='portfolio-navigation' tag='A' innertext='*Following' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[flC]</OutArgument>
+                                  </ui:GetFullText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetFullText>
+                                <ui:GetFullText ContinueOnError="True" DisplayName="Get Likes Count" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetFullText_6" IgnoreHidden="False">
+                                  <ui:GetFullText.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00f88667-8cb2-450d-b147-0f68d777e6d7" InformativeScreenshot="14922d8c2d32e026a96c87d6005cd4d8" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*Likes' parentid='portfolio-navigation' tag='A' innertext='*Likes' /&gt;&lt;webctrl parentid='portfolio-navigation' tag='SPAN' /&gt;&quot;, devpostPageSelector)]" WaitForReady="COMPLETE">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                    </ui:Target>
+                                  </ui:GetFullText.Target>
+                                  <ui:GetFullText.Text>
+                                    <OutArgument x:TypeArguments="x:String">[lC]</OutArgument>
+                                  </ui:GetFullText.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetFullText>
+                              </Sequence>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert Skills DT to Comma Seperated String" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\RowToStringConverter.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[skillsTable]</InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_String">[skillsString]</OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_rowName">skills</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert Interests DT to Comma Seperated String" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Processes\SocialHandlers\SocialHandlerUtilities\RowToStringConverter.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DT">[interestsTable]</InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_String">[interestsString]</OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_rowName">elements</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                              <ui:BuildDataTable DataTable="[dpTable]" DisplayName="Build Schema of the Final Devpost Table" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;resume_id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;username_devpost&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;skills&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;interests&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;projectCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;hackathonCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;achievementCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;followerCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;followingCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;likesCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:BuildDataTable>
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{idx,&#xA;userName,&#xA;skillsString,&#xA;interestsString,&#xA;Convert.ToInt32(pC),&#xA;Convert.ToInt32(hC),&#xA;Convert.ToInt32(aC),&#xA;Convert.ToInt32(fC),&#xA;Convert.ToInt32(flC),&#xA;Convert.ToInt32(lC)&#xA;}]" DataTable="[dpTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                              <Assign DisplayName="Assign the Results to Output" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="sd:DataTable">[out_dpTable]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="sd:DataTable">[dpTable]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:BrowserScope.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:BrowserScope>
+                    </Sequence>
+                  </Sequence>
+                  <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab After Processing is Complete" sap:VirtualizedContainerService.HintSize="518,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+                </Sequence>
+              </ActivityAction>
+            </ui:OpenBrowser.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:OpenBrowser>
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
